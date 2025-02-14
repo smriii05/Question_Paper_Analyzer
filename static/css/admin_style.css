@@ -1,0 +1,327 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    background-color: #bdbcabb6;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh; /* Full height of the viewport */
+    position: fixed; /* Keeps the sidebar fixed in place */
+    top: 0;
+    left: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar a, 
+.sidebar button {
+    display: block;
+    width: 75%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: #34495e;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+    background-color: #1abc9c;
+}
+
+.sidebar a.active {
+    background-color: #16a085;
+}
+
+.content {
+    margin-left: 250px; /* Adjust this to match the sidebar's width */
+    padding: 20px;
+    flex-grow: 1; /* Makes the content area fill the remaining space */
+    overflow-y: auto; /* Ensures content can scroll if it overflows */
+    box-sizing: border-box;
+    max-width: 1200px;
+}
+
+/* Title Styling */
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 700;
+    padding: 10px;
+    color: #04232b; /* Light background for h1 */
+}
+
+/* Subheading Styling */
+.content h2 {
+    font-size: 1.8rem;
+    color: #061320ee;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.content h3{
+    margin-left:100px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #34495e;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Table Layout */
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #abc5d1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header */
+th {
+    background-color: #8bcfc7;
+    color: black;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Table Data */
+td {
+    padding: 12px;
+    text-align: left;
+    border-top: 1px solid #cdebf0;
+    color: #34495e;
+    font-size: 1rem;
+}
+
+/* Zebra Stripes for Table Rows */
+tr:nth-child(even) {
+    background-color: #9daaad;
+}
+
+/* Hover Effect for Rows */
+tr:hover {
+    background-color: #bbaaaa;
+}
+
+/* Special Style for Accuracy Row */
+tr:last-child td {
+    background-color: #c4d3df;
+    font-weight: 600;
+}
+
+/* Empty Report Message */
+.content p {
+    font-size: 1.2rem;
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Table Data for Precision, Recall, etc. */
+td, th {
+    padding: 15px 20px;
+}
+
+td:last-child {
+    font-weight: bold;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    td, th {
+        padding: 10px;
+    }
+}
+/* Button Styling */
+button {
+    background-color: #e74c3c; /* Red color for danger */
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+
+/* Style for the menu toggle button */
+.menu-toggle {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000; /* Make sure it's above other elements */
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the button only on small screens */
+    }
+
+    .sidebar {
+        position: absolute;
+        width: 200px;
+        left: -200px;
+        transition: left 0.3s ease;
+        height: 100vh;
+        z-index: 999; /* Ensure the sidebar is above the content */
+        background-color: #2c3e50;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 50px; /* Prevent content from overlapping toggle button */
+    }
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: #2c3e50; /* Dark background to match the sidebar */
+    color: #ecf0f1; /* Light text color for contrast */
+    text-align: center; /* Center align the content */
+    padding: 10px 0; /* Add some padding for better spacing */
+    position: fixed; /* Keep the footer at the bottom */
+    bottom: 0;
+    width: 100%; /* Full width */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensure it's above other content */
+    font-size: 14px; /* Font size for readability */
+}
+
+footer a {
+    color: #1abc9c; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Style for the Delete button */
+.delete-button {
+    background-color: #e74c3c; /* Red color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.stats-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.stat-card {
+    background-color: #2c3e50;
+    border: 1px solid #ddd;
+    margin-left: 30px;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 0 15px rgba(139, 207, 199, 0.8); /* Glow effect */
+    flex: 1;
+    max-width: 300px;
+   
+}
+
+.stat-card h4 {
+    font-size: 1.4rem;
+    font-weight: 750;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.stat-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f5a937;
+}
+
+.analytics-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.classification-report {
+    width: 60%;
+}
+
+.confusion-matrix {
+    width: 35%;
+    text-align: center;
+}
+
+.confusion-matrix img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+

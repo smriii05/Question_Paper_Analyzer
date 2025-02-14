@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin_style.css') }}"
+    />
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script/script.js') }}"
+      defer
+    ></script>
+
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <header>
+    <div class="dashboard">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      {% if session.get('admin_logged_in') %}
+      <div class="sidebar">
+            <h2>Admin Panel</h2>
+            <a href="{{ url_for('admin_dashboard') }}" 
+            class="{% if request.endpoint == 'admin_dashboard' %}active{% endif %}">Dashboard</a>
+            <a href="{{ url_for('admin_analytics') }}"
+            class="{% if request.endpoint == 'admin_analytics' %}active{% endif %}">Analytics</a>
+            <a href="{{ url_for('admin_users') }}"
+            class="{% if request.endpoint == 'admin_users' %}active{% endif %}">Users</a>
+            <a href="#" onclick="confirmLogout()">Logout</a>
+            
+        </div>
+    </div>
+    {% endif %}
+    </header>
+    
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+      <p>&copy; 2024 Admin Dashboard. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "admin_main.html" %}
+{% block title %} Admin Dashboard - Overview {% endblock %} 
+
+{% block content %}
+<div class="content">
+    <h3>Welcome to the Admin Dashboard!</h3>
+    <br><br>
+    <div class="stats-container">
+        <div class="stat-card">
+            <h4>Total Users</h4>
+            <p>{{ num_users }}</p>
+        </div>
+        <div class="stat-card">
+            <h4>Total Questions</h4>
+            <p>{{ num_questions }}</p>
+        </div>
+        <div class="stat-card">
+            <h4>Model Accuracy</h4>
+            <p>{{ model_accuracy }}%</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

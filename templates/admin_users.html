@@ -1,0 +1,29 @@
+{% extends "admin_main.html" %}
+{% block title %}Admin Dashboard - Users{%endblock %} 
+{% block content %}
+<div class="content">
+    <h1>Users</h1>
+    <table border="1">
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user['user_id'] }}</td>
+            <td>{{ user['username'] }}</td>
+            <td>{{ user['email'] }}</td>
+            <td>
+                <!-- Add onclick event to show confirmation -->
+                <form method="POST" action="/admin/delete_user/{{ user['user_id'] }}" id="delete-form-{{ user['user_id'] }}" 
+                onsubmit="return confirmDelete(1)">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

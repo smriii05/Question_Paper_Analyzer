@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block title %}Question Paper Analyzer - Home{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    {% if not session.get('user_id') %}
+    <p>Login to view your analysis history.</p>
+    <div class="button-container">
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+    </div>
+{% else %}
+<h2>List of Analyzed Questions So Far</h2>
+    {% if rows %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Difficulty Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="button-container">
+            <a href="{{ url_for('results') }}" class="btn">View Recent Analysis Results</a>
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('analyze') }}" class="btn">Analyze more Questions.</a>
+        </div>
+        </div>
+    {% else %}
+        <p>No questions analyzed yet.</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+
+{% block title %}Question Paper Analyzer - Home{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2>Analyze Your Question Papers Easily!</h2>
+    <p>Our application allows users to upload a text file that contains a set of questions. 
+        Once the file is uploaded, the application automatically analyzes each question and classifies it as either "easy" or "hard" based on the complexity of the language. This helps users quickly assess the difficulty level of the questions in the file without manually going through each one.</p>
+    <a href="{{ url_for('analyze') }}" class="analyze-link">
+        <button>Start Analyzing</button>
+    </a>
+</div>
+{% endblock %}

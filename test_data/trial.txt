@@ -1,0 +1,3 @@
+Explain the scanline algorithm for polygon filling. Demonstrate the algorithm with an example of filling a polygon using scanline techniques.
+Explain the concept of animation in computer graphics. Describe keyframe animation and motion capture techniques with examples.
+What is the role of dithering in computer graphics? Explain how dithering improves image quality during color quantization.

@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+
+{% block title %}Question Paper Analyzer - Home{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2>Your Classified Questions</h2>
+    {% if rows %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Difficulty Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No questions found.</p>
+    {% endif %}
+    <div class="button-container">
+        <a href="{{ url_for('analyze') }}" class="btn">Go back to analyzer.</a>
+    </div>
+
+    <!-- Button to view analysis history -->
+    <div class="button-container">
+        <a href="{{ url_for('history') }}" class="btn">View Analysis History</a>
+    </div>
+</div>
+{% endblock %}

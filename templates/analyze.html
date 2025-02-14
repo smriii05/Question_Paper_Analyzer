@@ -1,0 +1,18 @@
+{% extends "main.html" %} {% block title %}Question Paper Analyzer - Analyze{%
+endblock %} {% block content %}
+<div class="content-container">
+  <h2>Upload your file in .txt format.</h2>
+  <form
+    id="analyzeForm"
+    action="{{ url_for('analyze') }}"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <input type="file" id="fileInput" name="file" class="filename" />
+    <span id="error-message" style="color: red; display: none"
+      >Please upload a valid text file (.txt)</span
+    >
+    <button type="submit" id="analyzeButton">Start Analysis</button>
+  </form>
+</div>
+{% endblock %}

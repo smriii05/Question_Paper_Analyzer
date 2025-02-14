@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Page</title>
+</head>
+<body>
+    <h1>Analysis Results</h1>
+
+    <h2>List 1:</h2>
+    <ul>
+        {% for item in list1 %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>List 2:</h2>
+    <ul>
+        {% for item in list2 %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">Back to Analyze Page</a>
+</body>
+</html>

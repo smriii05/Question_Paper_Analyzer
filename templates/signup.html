@@ -1,0 +1,66 @@
+{% extends "main.html" %} {% block title %}Question Paper Analyzer - Sign Up{%
+endblock %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login.css') }}"
+/>
+<script src="{{ url_for('static', filename='script/signupValidation.js') }}"></script>
+
+{% endblock %} {% block content %}
+
+<div class="loginbox">
+  <h1>Get Started!</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
+  <ul>
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
+  <form
+    name="signupForm"
+    action="{{ url_for('register') }}"
+    method="POST"
+    class="login"
+  >
+    <label for="fullname">Full Name:</label>
+    <input
+      type="text"
+      id="fullname"
+      name="fullname"
+      placeholder="Enter fullname"
+      required
+    />
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Enter Username"
+      required
+    />
+    <label for="email">Email:</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      placeholder="Enter Email"
+      required
+    />
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Enter Password"
+      required
+    />
+    <input type="submit" value="Sign Up" />
+    <br />
+        <p class="login-register-text">
+        <a href="/login">Already have an account? Login Here</a>.
+        </p>
+  </form>
+</div>
+{% endblock %}

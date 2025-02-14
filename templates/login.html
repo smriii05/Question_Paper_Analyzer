@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login.css') }}"
+/>
+{% block title %}Question Paper Analyzer - Login{% endblock %} {% block
+extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login.css') }}"
+/>
+{% endblock %} {% block content %}
+
+
+<div class="loginbox">
+  <img src="" alt="" />
+  <h1>Login Here</h1>
+  <form method="post" action="{{ url_for('login') }}">
+    Username:
+    <input type="text" name="username" placeholder="Enter Username" /> <br />
+    Password:
+    <input type="password" name="password" placeholder="Enter Password" /><br />
+    <a><input type="submit" name="" value="Login" /><br /><br /></a>
+    <a href="{{ url_for('signup') }}">Dont have an account? SIGN UP</a>
+  </form>
+</div>
+
+<!-- Popup modal -->
+<div id="flashMessageModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <p id="flashMessage"></p>
+  </div>
+</div>
+
+<!-- Display flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <script>
+      window.onload = function() {
+        // Get the modal and message elements
+        var modal = document.getElementById('flashMessageModal');
+        var messageElement = document.getElementById('flashMessage');
+        
+        // Set the message text and show the modal
+        messageElement.textContent = "{{ messages[0][1] }}";
+        modal.style.display = 'block';
+      }
+    
+    </script>
+  {% endif %}
+{% endwith %}
+
+<script>
+  function closeModal() {
+    var modal = document.getElementById('flashMessageModal');
+    modal.style.display = 'none';
+  }
+</script>
+
+{% endblock %}

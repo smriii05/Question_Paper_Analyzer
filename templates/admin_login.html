@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin_login.css') }}"
+    />
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script/script.js') }}"
+      defer
+    ></script>
+    </head>
+    <body>
+      <div class="loginbox">
+      <img src="" alt="" />
+      <h1>Admin Login</h1>
+      <form method="post" action="/admin/login">
+        Username:
+        <input type="text" name="username" placeholder="Enter Username" /> <br />
+        Password:
+        <input type="password" name="password" placeholder="Enter Password" /><br />
+        <a><input type="submit" name="" value="Login" /><br /><br /></a>
+          {% if error %}
+          <p style="color: red;">{{ error }}</p>
+          {% endif %}
+        
+      </form>
+    </div>
+    
+    <!-- Popup modal -->
+    <div id="flashMessageModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="flashMessage"></p>
+      </div>
+    </div>
+    
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <script>
+          window.onload = function() {
+            // Get the modal and message elements
+            var modal = document.getElementById('flashMessageModal');
+            var messageElement = document.getElementById('flashMessage');
+            
+            // Set the message text and show the modal
+            messageElement.textContent = "{{ messages[0][1] }}";
+            modal.style.display = 'block';
+          }
+        
+        </script>
+      {% endif %}
+    {% endwith %}
+    
+    <script>
+      function closeModal() {
+        var modal = document.getElementById('flashMessageModal');
+        modal.style.display = 'none';
+      }
+    </script>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <p>&copy; 2024 Admin Dashboard. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+    
+
